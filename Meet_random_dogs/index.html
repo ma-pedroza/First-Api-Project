@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the dogs</title>
+    <link rel="stylesheet" href="./assets/index.css">
+</head>
+<body>
+    <h1>Conheça cachorros !</h1>
+    <div  class="container" id="container-dogs">
+
+    </div>
+
+    <div class="pagination">
+        <button id="prev">Anterior</button>
+        <button id="next">Próximo</button>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const container = document.getElementById("container-dogs")
+        const prevButton = document.getElementById("prev")
+        const nextButton = document.getElementById("next")
+
+        async function getDogs() {
+            try{
+                container.innerHTML = "Carregando o dog...";
+
+                const response = await fetch('https://api.thedogapi.com/v1/images/search?limit=10', {
+                    headers: {
+                        'x-api-key': 'live_bowB83joQcZzDFZdrgBxfsr1ow67Xf22tAugTm8amQT5D6Ldj2eqWHCy5YUDubyJ'
+                    }
+                })
+
+                const data = await response.json();
+                container.innerHTML = "";
+
+                console.log(data);
+
+                data.forEach(dog => {
+                    const card = document.createElement("div");
+                    card.className = "card";
+
+                    let dogNome;
+                
+                    if(dog.breeds.length > 0){
+                        dogNome = dog.breeds[0].name;
+                    }else{
+                        dogNome = "Doguinho desconhecido :("
+                    }
+
+                    card.innerHTML = `
+                    <img src="${dog.url}" alt="${dogNome}"
+                        <p>${dogNome}</p>
+                    `;
+                    card.addEventListener("click", () => {
+                        window.location.href = `dog.html?id=${dog.id}`;
+                    });
+                    container.appendChild(card);
+                });
+                
+
+
+            }
+            catch (error){
+                console.error("Erro ao carregar os cachorros", error);
+                container.innerHTML = "Erro ao carregar os cachorros"
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => getDogs());
+    </script>
+</body>
+</html>
