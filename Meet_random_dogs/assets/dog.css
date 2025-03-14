@@ -1,17 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
+
+@keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
 body{
+    background: linear-gradient(45deg, #110324, #000000,  #000000, #090114);
+    background-size: 300% 300%;
+    animation: gradientAnimation 5s ease infinite;
+    text-align: center;
     background-color: black;
     color: white;
-    text-align: center;
-}
+    font-family: 'Doto';
+}       
 .container{
-    max-width: 400px;
+    max-width: 300px;
     margin: auto;
     background-color: rgb(29, 28, 28);
     border-radius: 10px;
     padding: 20px;
+    box-shadow: 0 0 15px 0px rgba(255, 255, 240, 0.684);
 }
 
 img{
     width: 100%;
     border-radius: 10px;
+}
+
+button{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 5px;
+    background-color: #ff6b6bdb;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 15px;
+    font-family: 'Doto';
+    transition: transform 0.3s ease-in-out;
+}   
+
+button:hover {
+    background-color: #ff6b6bdb;
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }

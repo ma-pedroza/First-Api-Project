@@ -1,7 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
 body{
+    background: linear-gradient(45deg, #110324, #000000,  #000000, #090114);
+    background-size: 300% 300%;
+    animation: gradientAnimation 5s ease infinite;
     text-align: center;
     background-color: black;
     color: white;
+    font-family: 'Doto';
 }
 
 .container{
@@ -13,20 +30,43 @@ body{
 }
 
 .card{
-    background-color: rgb(35, 33, 33);
+    background-color: #0000006d;
     padding: 10px;
     border-radius: 10px;
     width: 150px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: transform 0.3s;
+    color: rgb(255, 255, 175);
 }
 
 .card:hover{
-    transform: scale(1.05);
+    transform: scale(1.2);
+    z-index: 0;
+    box-shadow: 0 0 15px 0px rgb(255, 255, 240);
+    background-color: #00000070;
+    
 }
 
 img{
     width: 100%;
     border-radius: 10px;
     height: 60%;
+}
+button{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 5px;
+    background-color: #6e6bff;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 15px;
+    font-family: 'Doto';
+    transition: transform 0.3s ease-in-out; 
+}
+
+button:hover {
+    background-color: #6e6bff;
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
